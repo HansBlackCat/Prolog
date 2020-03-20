@@ -181,7 +181,12 @@ p30
 ___
 
 ```prolog
-word(abalone,a,b,a,l,o,n,e). word(abandon,a,b,a,n,d,o,n). word(enhance,e,n,h,a,n,c,e). word(anagram,a,n,a,g,r,a,m). word(connect,c,o,n,n,e,c,t). word(elegant,e,l,e,g,a,n,t).
+word(abalone,a,b,a,l,o,n,e).
+word(abandon,a,b,a,n,d,o,n).
+word(enhance,e,n,h,a,n,c,e).
+word(anagram,a,n,a,g,r,a,m).
+word(connect,c,o,n,n,e,c,t).
+word(elegant,e,l,e,g,a,n,t).
 
 crosswd(V1,V2,V3,H1,H2,H3) :- 
   word(H1,_,H1V1,_,H1V2,_,H1V3,_),
