@@ -2,11 +2,10 @@
 
 ## 2.1 Mathcing
 
-### three types of terms
-
-1. Constants: atoms or numbers
-2. Variables
-3. Complex terms
+>**three types of terms**
+>1. Constants: atoms or numbers
+>2. Variables
+>3. Complex terms
 
 
 ```
@@ -60,3 +59,27 @@ Y = stab(knife)
 
 yes
 ```
+
+```
+| ?- kill(shoot(gun),stab(knife)) = kill(X,stab(Y)).
+
+X = shoot(gun)
+Y = knife
+
+yes
+```
+
+Cyclic term
+
+if X instanciated with father(butch)\
+father(father(butch)) = father(butch)
+
+
+```
+| ?- father(X) = X.
+
+cannot display cyclic term for X
+
+yes
+```
+
