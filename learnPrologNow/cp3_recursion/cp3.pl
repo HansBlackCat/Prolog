@@ -30,3 +30,14 @@ numeral(succ(X)) :- numeral(X).
 add(0,Y,Y).
 add(succ(X),Y,succ(Z)) :-
     add(X,Y,Z).
+
+
+% Rearange
+descend2(X,Y) :- 
+    descend2(Z,Y),
+    child(X,Z).
+descend2(X,Y) :- child(X,Y).
+
+numeral2(succ(X)) :- numeral2(X).
+numeral2(0).
+

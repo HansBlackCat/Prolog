@@ -106,6 +106,8 @@ X = succ(succ(succ(0))) ? ;
 X = succ(succ(succ(succ(0)))) ?
 ```
 
+make function `add`
+
 ```prolog
 add(0,Y,Y).
 add(succ(X),Y,succ(Z)) :-
@@ -122,3 +124,60 @@ yes
 
 yes
 ```
+
+## Cluase ordering, goal ordering, and termination
+
+make some changes.
+
+```prolog
+% Descendant2
+descend2(X,Y) :-
+    descend2(Z,Y),
+    child(X,Z).
+descend2(X,Y) :- child(X,Y).
+```
+
+then interpret again.
+
+```
+| ?- descend2(martha,rose).
+
+Fatal Error: local stack overflow (size: 16384 Kb, reached: 16384 Kb, environment variable used: LOCALSZ)
+```
+
+In **_Purely Logical Definition_** nothing has changed.\
+However, in **_Procedural_** point of view, meaning has changed.
+
+```
+[trace]
+descend2(W1,rose).
+descend2(W2,rose).
+descend2(W3,rose).
+descend2(W4,rose).
+...
+```
+
+Rearange `numeral`
+
+```prolog
+numeral2(succ(X)) :- numeral2(X).
+numeral2(0).
+```
+
+`numeral` vs `numeral2`
+
+```
+| ?- numeral(X).
+
+X = 0 ? ;
+
+X = succ(0) ? ;
+
+X = succ(succ(0)) ? ;
+
+X = succ(succ(succ(0))) ? 
+| ?- numeral2(X).
+
+Fatal Error: local stack overflow (size: 16384 Kb, reached: 16384 Kb, environment variable used: LOCALSZ)
+```
+
