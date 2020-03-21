@@ -205,7 +205,8 @@ H2 = anagram
 H3 = connect
 V1 = abandon
 V2 = elegant
-V3 = enhance ? 
+V3 = enhance ?
 
 yes
 ```
+
