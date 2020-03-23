@@ -158,6 +158,10 @@ Y = 5
 
 ## Compare Integers
 
-Arithmetic examples | Prolog Notation
-$x<y$ | $x =<y.$
+| Arithmetic examples | Prolog Notation |
+|:-------------------:| :-------:|
+x<y | x =<y.
 
+$ \begin{equation}
+\frac{1}{2}
+$ \end{equation}
