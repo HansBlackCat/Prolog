@@ -160,8 +160,99 @@ Y = 5
 
 | Arithmetic examples | Prolog Notation |
 |:-------------------:| :-------:|
-x<y | x =<y.
+$x<y$ | $X<Y.$
+$x \leq y$ | $X=<Y.$
+$x=y$ | $X=:=Y.$
+$x\neq y$|$X=\backslash=Y.$
+$x\geq y$|$X>=Y.$
+$x>y$ | $X>Y.$
 
-$ \begin{equation}
-\frac{1}{2}
-$ \end{equation}
+```
+| ?- 2<4.   
+
+yes
+| ?- 5=:=5.
+
+yes
+| ?- 3=\=12.
+
+yes
+```
+
+also arith notation force eval
+
+```
+| ?- 2+3 < 12*4.
+
+yes
+```
+
+```
+| ?- 2+2 = 4.
+
+no
+| ?- 2+2 =:= 4.
+
+yes
+```
+
+```
+| ?- X=3, X<4.
+
+X = 3
+
+yes
+```
+
+### max function
+
+```prolog
+accMax([H|T],A,Max) :-
+    H > A,
+    accMax(T,H,Max).
+accMax([H|T],A,Max) :-
+    H =< A,
+    accMax(T,A,Max).
+accMax([],A,A).
+```
+
+```
+| ?- accMax([1,4,2,8,5],0,X).
+
+X = 8 ? 
+
+yes
+```
+
+but how about this case
+
+```
+| ?- accMax([-1,-4,-2,-8,-5],0,X).
+
+X = 0 ? 
+
+yes
+```
+
+because of _accumulator_ initialized with 0, it fails.
+
+So we need wrapper **rule**.
+
+```prolog
+max(List,Max) :-
+    List = [H|_],
+    accMax(List,H,Max).
+```
+
+```
+| ?- max([-1,-4,-2,-8,-5],X).  
+
+X = -1
+
+yes
+| ?- max([1,4,2,8,5],X).          
+
+X = 8 ? 
+
+yes
+```
